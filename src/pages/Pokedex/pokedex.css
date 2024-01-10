@@ -1,4 +1,4 @@
-/* .pokedex {
+.pokedex {
   width: 100%;
 }
 
@@ -37,4 +37,4 @@
   .content-container {
     flex-direction: column;
   }
-} */
+}
