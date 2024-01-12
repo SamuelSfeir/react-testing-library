@@ -6,7 +6,7 @@ beforeEach(() => {
   renderWithRouter(<NotFound />);
 });
 
-describe('Teste o componente <NotFound.js />', () => {
+describe('Teste o componente <NotFound />', () => {
   // Testa se a página contém um heading h2 com o texto "Page requested not found".
   it('Se a página contém um heading h2 com o texto Page requested not found', () => {
     // Obtém o elemento do título usando o atributo `role` e `name`.

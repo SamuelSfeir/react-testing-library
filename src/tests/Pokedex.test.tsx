@@ -1,40 +1,42 @@
-import { screen, render } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import renderWithRouter from '../renderWithRouter';
+import { screen } from '@testing-library/react';
 import App from '../App';
+import renderWithRouter from '../renderWithRouter';
 
-beforeEach(() => {
-  renderWithRouter(<App />);
-});
-
-describe(`Se é exibido o próximo pokémon da lista quando o botão Próximo pokémon
-  é clicado`, () => {
-  it('O botão deve conter o texto Próximo pokémon', () => {
-    const button = screen.getByRole('button', { name: 'Próximo Pokémon' });
-
-    expect(button).toBeInTheDocument();
+describe('Testa o componente Pokedex ', () => {
+  it('Deve mostrar proximo pokemon e resetar', async () => {
+    const { user } = renderWithRouter(<App />);
+    let nomeDoPokemon2 = screen.getByTestId(nomeDoPokemon);
+    expect(nomeDoPokemon2.innerHTML).toBe('Pikachu');
+    const button = screen.getByText('Próximo Pokémon');
+    await user.click(button);
+    nomeDoPokemon2 = screen.getByTestId(nomeDoPokemon);
+    expect(nomeDoPokemon2.innerHTML).toBe('Charmander');
+    await user.click(button);
+    nomeDoPokemon2 = screen.getByTestId(nomeDoPokemon);
+    expect(nomeDoPokemon2.innerHTML).toBe('Caterpie');
   });
 
-  it('É possível clicar no botão de filtragem All', () => {
-    const buttonAll = screen.getByRole('button', { name: /all/i });
-
-    expect(buttonAll).toBeInTheDocument();
-    userEvent.click(buttonAll);
+  it('Testa se tem o filtro de todos os tipos', async () => {
+    const { user } = renderWithRouter(<App />);
+    const tiposDePokemon = ['Dragon', 'Normal', 'Bug', 'Electric', 'Poison', 'Fire', 'Psychic'];
+    const botaoTipos = screen.getAllByTestId('pokemon-type-button');
+    expect(botaoTipos.length).toBe(7);
+    botaoTipos.forEach((btn) => {
+      expect(tiposDePokemon).toContain(btn.innerHTML);
+    });
+    const todosBtn = screen.getByText('All');
+    await user.click(botaoTipos[2]);
+    let nomeDoPokemon2 = screen.getByTestId(nomeDoPokemon);
+    expect(nomeDoPokemon2.innerHTML).toBe('Caterpie');
+    await user.click(todosBtn);
+    nomeDoPokemon2 = screen.getByTestId(nomeDoPokemon);
+    expect(nomeDoPokemon2.innerHTML).toBe('Pikachu');
   });
-});
 
-describe('Teste os botões', () => {
-  it('Se tem a quantidade correta de botões', () => {
-    const qtdButons = 7;
-    const buttons = screen.getAllByTestId('pokemon-type-button');
-    expect(buttons.length).toBe(qtdButons);
-  });
-
-  it('Se o texto corresponde ao tipo', () => {
-    const buttons = screen.getByRole('button', { name: /fire/i });
-    userEvent.click(buttons);
-
-    const type = screen.getAllByTestId('pokemon-type');
-    expect(type[0].textContent).toBe('Electric');
+  const nomeDoPokemon = 'pokemon-name';
+  it('Testar h2 com Encountered Pokémon', () => {
+    renderWithRouter(<App />);
+    const textoH2 = screen.getByText('Encountered Pokémon');
+    expect(textoH2).toBeInTheDocument();
   });
 });
