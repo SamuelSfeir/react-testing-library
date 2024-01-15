@@ -10,6 +10,9 @@ Welcome to my project at Trybe, where I delve into the practice of testing React
 ## Project description
 This project's main objective was to consolidate my knowledge in unit and integration testing in the React environment. Using the React Testing Library, I explored several strategies to ensure the quality and robustness of the code, focusing especially on ensuring the expected behavior of the application components.
 
+## Tests
+You can find all the tests devoloped by clicking [here](https://github.com/SamuelSfeir/react-testing-library/tree/main/src/tests)
+
 ## Technologies Used
 - React
 - React Testing Library
@@ -43,6 +46,9 @@ Bem-vindo ao meu projeto na Trybe, onde me aprofundei na prática do teste de co
 
 ## Descrição do Projeto
 Este projeto teve como objetivo principal consolidar meus conhecimentos em testes unitários e de integração no ambiente React. Utilizando a React Testing Library, explorei diversas estratégias para garantir a qualidade e robustez do código, focando especialmente em assegurar o comportamento esperado dos componentes da aplicação.
+
+## Testes
+Você pode encontrar todos os testes desenvolvidos clicando [aqui](https://github.com/SamuelSfeir/react-testing-library/tree/main/src/tests)
 
 ## Tecnologias Utilizadas
 - React
