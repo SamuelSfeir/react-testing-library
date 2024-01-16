@@ -41,7 +41,6 @@ Thanks for checking out my project!
    
 # React Testing Library
 
-## Projeto Trybe - React Testing Library
 Bem-vindo ao meu projeto na Trybe, onde me aprofundei na prática do teste de componentes React utilizando a biblioteca React Testing Library. Este projeto faz parte do módulo de testes unitários e de integração da formação de Desenvolvimento de Software Full Stack da Trybe.
 
 ## Descrição do Projeto
